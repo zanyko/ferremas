@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script>
+        $(function(){
+            $("#formulario").validate({
+                //validate tiene 2 bloques, reglas y mensajes
+                rules:{
+                    idObra:'required',
+                    nombre:'required',
+                    descripcion:'required',
+                    autor:'required',
+                    anio:'required',
+                    stock:'required',
+                    categoria:'required',
+                    imagen:'required',
+                    precio:'required'
+                },
+                messages:{
+                    idObra:{
+                        required:'Ingrese id obra'
+                    },
+                    nombre:{
+                        required:'Ingrese marca obra'
+                    },
+                    descripcion:{
+                        required:'Ingrese descripción'
+                    },
+                    autor:{
+                        required:'Ingrese Autor'
+                    },
+                    anio:{
+                        required:'Ingrese año'
+                    },
+                    stock:{
+                        required:'Ingrese Stock'
+                    },
+                    categoria:{
+                        required:'Seleccione categoria'
+                    },
+                    imagen:{
+                        required:'Seleccione imagen'
+                    },
+                    precio:{
+                        required:'Ingrese precio'
+                    }
+                }
+            })
+        })
+    </script>
+    <!--FORMULARIO--> 
+    <div class="container">
+        <div class="admire-container" style="padding:10vh;">
+            <div class="form-title">
+                <h2>Compartir Obra</h2>
+            </div>
+            <span class="liner"></span>
+            <form action="#" method="POST" enctype="multipart/form-data" id="formulario">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    {{ obraform.idObra.label }}
+                    {% render_field obraform.idObra type="text" class="form-control" %}
+                </div>
+    
+                <div class="form-group">
+                    {{ obraform.nombre.label}}
+                    {{ obraform.nombre }}
+    
+                </div>
+    
+                <div class="form-group">
+                    {{ obraform.descripcion.label}}
+                    {{ obraform.descripcion }}
+                </div>
+
+                <div class="form-group">
+                    {{ obraform.autor.label}}
+                    {{ obraform.autor }}
+                </div>
+
+                <div class="form-group">
+                    {{ obraform.anio.label}}
+                    {{ obraform.anio }}
+                </div>
+
+                <div class="form-group">
+                    {{ obraform.stock.label}}
+                    {{ obraform.stock }}
+                </div>
+
+                <div class="form-group">
+                    {{ obraform.categoria.label}}
+                    {{ obraform.categoria }}
+    
+                </div>
+    
+                <div class="form-group">
+                    {{ obraform.imagen.label}}
+                    {{ obraform.imagen }}
+                </div>
+                <div class="form-group">
+                    {{ obraform.precio.label}}
+                    {{ obraform.precio }}
+                </div>
+                <div class="form-submit-btn">
+                    <input type="submit" value="Crear obra" class="btn btn-outline-success">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

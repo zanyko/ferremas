@@ -1,0 +1,100 @@
+{% load static %}
+
+<div class="collapse navbar-collapse naz" id="navbarNavDropdown">
+    <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products' %}">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'buscar' %}">Buscar</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'buscar' %}">Ver productos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'carrito2' %}">Carrito</a></li>
+                        <li><a class="dropdown-item" href="{% url 'miscompras' %}">Mis Compras</a></li>
+                    </ul>
+                </li>
+                {% if user.is_staff %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu Miembro
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% if user.tipo == 'vendedor' %}
+                                
+                                <li><a class="dropdown-item" href="{% url 'vercompras' %}">Ver compras</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pedidos' %}">Ver pedidos</a></li>
+                            {% endif %}
+                            {% if user.tipo == 'bodeguero' %}
+                                <li><a class="dropdown-item" href="{% url 'productoCrear' %}">Agregar producto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'editar' %}">Modificar/Eliminar</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pedidos' %}">Ver pedidos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'inventario' %}">Ver inventario</a></li>
+                            {% endif %}
+                            {% if user.tipo == 'contador' %}
+                                <li><a class="dropdown-item" href="{% url 'ventas' %}">Historial de ventas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'balmensual' %}">Crear Balance Mensual</a></li>
+                                <li><a class="dropdown-item" href="{% url 'balances' %}">Ver Balances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'gasto_crear' %}">Crear gasto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'gastos' %}">Ver gastos</a></li>
+                            {% endif %}
+                            {% if user.tipo == 'administrador' %}
+                                <li><a class="dropdown-item" href="{% url 'informe_m' %}">Informes mensuales</a></li>    
+                                <li><a class="dropdown-item" href="{% url 'informe_d' %}">Informes de desempeño</a></li>
+                                <li><a class="dropdown-item" href="{% url 'informe_m_crear' %}">Crear informe mensual</a></li>
+                                <li><a class="dropdown-item" href="{% url 'informe_d_crear' %}">Crear informe de desempeño</a></li>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                                <li><a class="dropdown-item" href="{% url 'usuarios' %}">Usuarios</a></li>
+                                
+                                <li><a class="dropdown-item" href="{% url 'productoCrear' %}">Agregar producto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'editar' %}">Modificar/Eliminar</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'vercompras' %}">Ver compras</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pedidos' %}">Ver pedidos</a></li>
+                                
+                                
+                                <li><a class="dropdown-item" href="{% url 'informe_m' %}">Informes mensuales</a></li>    
+                                <li><a class="dropdown-item" href="{% url 'informe_d' %}">Informes de desempeño</a></li>
+                                <li><a class="dropdown-item" href="{% url 'informe_m_crear' %}">Crear informe mensual</a></li>
+                                <li><a class="dropdown-item" href="{% url 'informe_d_crear' %}">Crear informe de desempeño</a></li>
+                                
+                                <li><a class="dropdown-item" href="{% url 'ventas' %}">Historial de ventas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'balmensual' %}">Crear Balance Mensual</a></li>
+                                <li><a class="dropdown-item" href="{% url 'balances' %}">Ver Balances</a></li>
+                                <li><a class="dropdown-item" href="{% url 'gasto_crear' %}">Crear gasto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'gastos' %}">Ver gastos</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+    <div class="navbar-right">
+        {% if user.is_authenticated %}
+            <div class="boxes">
+                <a href="{% url 'profile' %}" class="nav-link" >{{ user.username }}</a>
+            </div>
+            <a href="{% url 'profile' %}" class="nav-link"><img class="pic-user" src="{{user.pic.url}}" alt="imgGC" title="Click para ver tu Perfil"></a>
+            <div class="boxes">
+                <a href="{% url 'cerrar' %}" class="navbar-item" id="#">Cerrar sesión</a>
+            </div>
+        {% else %}
+            <img src="{% static 'assets/icons/tea.png' %}" alt="imgGC">
+            <div class="boxes">
+                <a href="{% url 'login' %}" id="userGC">Iniciar sesion</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

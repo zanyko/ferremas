@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="admire-container">
+            <div class="form-title" style="margin-bottom: 15px;">
+                <h2>Pago</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="detallecarrito">
+                <div>
+                    <p>Usuario:</p>
+                    <p class="price">{{ preview.name }}</p>
+                </div>
+                <div>
+                    <p>Cantidad de artículos:</p>
+                    <p class="price">{{ preview.cantidad }}</p>
+                </div>
+                <div>
+                    <p>Total:</p>
+                    <p class="price">${{ preview.total }}</p>
+                </div>
+                <div>
+                    <p>Dirección de envío:</p>
+                    <p class="price">{{ preview.idDireccion.name }}: {{ preview.idDireccion.street }}, {{ preview.idDireccion.city }}</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around" style="margin-top: 20px;">
+                <form method="POST" action="{% url 'pagoIniciar' preview.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-info btn-responsive">Proceder pago</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

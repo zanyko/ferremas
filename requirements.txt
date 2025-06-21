@@ -1,0 +1,26 @@
+Django==4.1.2
+
+npm install django
+
+npm install bootstrap@4.6.0
+
+pip install pillow
+
+pip install crispy
+
+pip install django-crispy-forms
+
+pip install crispy-bootstrap4
+
+pip install django-widget-tweaks
+
+pip install djangorestframework
+
+pip install transbank
+
+pip install transbank-sdk-python
+
+pip install git+https://github.com/TransbankDevelopers/transbank-sdk-python.git
+
+pip install aftership
+

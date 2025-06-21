@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <hr>
+        <div class="login-container">
+            <div class="form-title" style="margin-bottom: 15px;">
+                <h2>Mis direcciones</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="table-container">
+                <table id="tobras"> 
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Calle</th>
+                            <th>Ciudad</th>
+                            <th>Región</th>
+                            <th>Código</th>
+                            <th>País</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ad in addresses %}
+                            <tr>
+                                <td>{{ad.name}}</td>
+                                <td>{{ad.street}}</td>
+                                <td>{{ad.city}}</td>
+                                <td>{{ad.state}}</td>
+                                <td>{{ad.zipcode}}</td>
+                                <td>{{ad.country}}</td>
+                                <td>{{ad.phone}}</td>
+                                {% if user.is_authenticated %}
+                                    <td>
+                                        <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                            <a href="{% url 'addressMod' ad.id %}" class="btn btn-outline-info">Editar</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+                <div class="profile-buttons">
+                    {% if user.is_authenticated and request.user.id == user.id %}
+                        <a href="{% url 'address' %}" class="btn btn-outline-info" style="font-size: 2vh;">Agregar dirección</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

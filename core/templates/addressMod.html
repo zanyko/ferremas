@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <!--FORMULARIO--> 
+    <div class="container">
+        <div class="login-container2" >
+            <div class="form-title">
+                <h2>Modificar dirección</h2>
+            </div>
+            <span class="liner"></span>
+            <form action="#" method="POST" enctype="multipart/form-data" id="formulario" class="form85">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ fillMe.name.label}}
+                    {{ fillMe.name }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.street.label}}
+                    {{ fillMe.street }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.city.label}}
+                    {{ fillMe.city }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.state.label}}
+                    {{ fillMe.state }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.zipcode.label}}
+                    {{ fillMe.zipcode }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.country.label}}
+                    {{ fillMe.country }}
+                </div>
+                <div class="form-group">
+                    {{ fillMe.phone.label}}
+                    {{ fillMe.phone }}
+                </div>
+                <div class="form-submit-btn">
+                    <input type="submit" value="Actualizar" class="btn btn-outline-info boton">
+                </div>
+            </form>
+        </div>
+    </div>
+</html>
+{% endblock %}

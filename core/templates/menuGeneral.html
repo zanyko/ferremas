@@ -1,0 +1,38 @@
+{% load static %}
+<div class="collapse navbar-collapse naz" id="navbarNavDropdown">
+    <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products' %}">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'buscar' %}">Buscar</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-right">
+        {% if user.is_authenticated %}
+            <div class="boxes">
+                <a href="#" class="nav-link" >{{ user.username }}</a>
+            </div>
+            <img src="{% static 'assets/icons/tea.png' %}" alt="imgGC">
+            <div class="boxes">
+                <a href="{% url 'cerrar' %}" class="navbar-item" id="#">Cerrar sesión</a>
+            </div>
+        {% else %}
+            <div class="boxes">
+                <a href="{% url 'signup' %}" id="userGC">Registrarse</a>
+            </div>
+            <img src="{% static 'assets/icons/tea.png' %}" alt="imgGC">
+            <div class="boxes">
+                <a href="{% url 'login' %}" id="userGC">Iniciar sesion</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <!--FORMULARIO-->  
+    <div class="container">
+        <div class="login-container2">
+            <div class="form-title">
+                <h2>Iniciar Sesión</h2>
+            </div>
+            <span class="liner"></span>
+            <form action="#" method="POST" class="form85">
+                {% csrf_token %}            
+                    <div class="form-group">
+                        <label for="" class="form-label">Usuario: </label><br>
+                        {% render_field form.username type="text" class="form-control" placeholder="Nombre de usuario" %}
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label" >Contraseña: </label><br>
+                        {% render_field form.password type="password" class="form-control" placeholder="Ingrese contraseña" %}
+                    </div>
+                <div class="form-submit-btn">
+                    <input type="submit" class="btn btn-outline-info" value="Entrar">
+                </div>
+                <div class="form-submit-btn">
+                    <a href="{% url 'signup' %}" title="Registrese aquí" class="btn btn-outline-info">
+                        Registrarse
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

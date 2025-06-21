@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Registro de gastos</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for g in gastos %}
+                        <tr>
+                            <td class="price">{{g.id }}</td>
+                            <td class="price">{{g.total }}</td>
+                            <td class="price">{{g.fecha }}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

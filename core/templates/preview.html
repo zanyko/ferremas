@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="login-container2">
+            <div class="form-title" style="margin-bottom: 15px;">
+                <h2>Seleccione despacho</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="d-flex justify-content-around" style="margin-top: 20px;">
+                <form method="POST" class="form85">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="direccion_id">Seleccione dirección:</label>
+                        <select name="direccion_id" id="direccion_id" class="form-control" required>
+                            <option value="">Seleccione una dirección</option>
+                            {% for direccion in direcciones %}
+                                <option value="{{ direccion.id }}">
+                                    {{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-submit-btn">
+                        <input type="submit" class="btn btn-outline-info" value="Seleccionar">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

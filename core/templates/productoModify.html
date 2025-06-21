@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <!--FORMULARIO--> 
+    <div class="container">
+        <div class="admire-container" style="padding:10vh;">
+            <div class="form-title">
+                <h2>Modificar Producto</h2>
+            </div>
+            <span class="liner"></span>
+            {% if user.is_staff %}
+                <form action="#" method="POST" enctype="multipart/form-data" id="formulario">
+                    {% csrf_token %}
+                    <div class="flexbox">
+                        <div class="form-group">
+                            {% if producto.imagen %}
+                                <img src="{{ producto.imagen.url }}" style="height:15vw; border-radius: 15px; border:1px solid rgb(195, 195, 195)">
+                            {% else %}
+                                <p class="pvalue">Producto sin imagen</p>
+                            {% endif %}
+                        </div>
+                        <div class="flexbox-c">
+                            <div class="form-group i2">
+                                {{ fillMe.nombre.label}}
+                                {{ fillMe.nombre }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.descripcion.label}}
+                        {{ fillMe.descripcion }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.marca.label}}
+                        {{ fillMe.marca }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.anio.label}}
+                        {{ fillMe.anio }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.stock.label}}
+                        {{ fillMe.stock }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.categoria.label}}
+                        {{ fillMe.categoria }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.imagen.label}}
+                        {{ fillMe.imagen }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.precio.label}}
+                        {{ fillMe.precio }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.estado.label}}
+                        {{ fillMe.estado }}
+                    </div>
+                    <div class="form-group">
+                        {{ fillMe.ubicacion.label}}
+                        {{ fillMe.ubicacion }}
+                    </div>
+                    <div class="form-submit-btn">
+                        <input type="submit" value="Actualizar producto" class="btn btn-outline-warning boton">
+                    </div>
+                    <div class="form-submit-btn">
+                        <input type="submit" value="Eliminar producto" class="btn btn-outline-danger boton">
+                    </div>
+                </form>
+            {% else %}
+                <div class="form-group">
+                    <span>
+                        Esta página está disponible solo para usuarios Staff!
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</html>
+{% endblock %}

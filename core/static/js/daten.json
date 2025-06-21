@@ -1,0 +1,147 @@
+{
+"daten":[
+    {
+        "id":"1",
+        "tipo":"Pinturas",
+        "tipobra":"1",
+        "nombre":"Lake Calm",
+        "descripcion":"descripcion1",
+        "autor":"Andrés Salfate",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/bobross/bobRoss01.webp",
+        "available":"1"
+    },
+    {
+        "id":"2",
+        "tipo":"Esculturas",
+        "tipobra":"2",
+        "nombre":"Afrodita アフロディタ",
+        "descripcion":"Esculturas de Rebecca C.",
+        "autor":"Rebecca Chambers",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/esculturas/esculturas1.jpg",
+        "available":"1"
+    },
+    {
+        "id":"3",
+        "tipo":"Orfebreria",
+        "tipobra":"3",
+        "nombre":"Anillos de Bronze Pulido",
+        "descripcion":"descripcion3",
+        "autor":"Sybil Vennett",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/orfebreria/orfebreria.jpg",
+        "available":"0"
+    },
+    {
+        "id":"4",
+        "tipo":"Tejidos",
+        "tipobra":"4",
+        "nombre":"Tejidos Dark",
+        "descripcion":"descripcion4",
+        "autor":"Neia Varaya",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/tejidos/tejidos1.webp",
+        "available":"1"
+    },
+    {
+        "id":"5",
+        "tipo":"Pinturas",
+        "tipobra":"1",
+        "nombre":"Atardecer en la Montaña",
+        "descripcion":"descripcion5",
+        "autor":"Andrés Salfate",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/bobross/bobRoss02.jpg",
+        "available":"0"
+    },
+    {
+        "id":"6",
+        "tipo":"Esculturas",
+        "tipobra":"2",
+        "nombre":"Réplica Emperador Leon",
+        "descripcion":"descripcion6",
+        "autor":"Sybil Vennett",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/esculturas/esculturas3.jpg",
+        "available":"0"
+    },
+    {
+        "id":"7",
+        "tipo":"Orfebreria",
+        "tipobra":"3",
+        "nombre":"Onzas de Plata",
+        "descripcion":"descripcion7",
+        "autor":"Videl Zankyan",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/orfebreria/orfebreria2.webp",
+        "available":"0"
+    },
+    {
+        "id":"8",
+        "tipo":"Tejidos",
+        "tipobra":"4",
+        "nombre":"Chaleco de Verde Olivo",
+        "descripcion":"descripcion8",
+        "autor":"Neia Varaya",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/tejidos/tejidos5.jpg",
+        "available":"0"
+    },
+    {
+        "id":"9",
+        "tipo":"Pinturas",
+        "tipobra":"1",
+        "nombre":"Otoño Caído",
+        "descripcion":"descripcion9",
+        "autor":"Claire Ramos",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/paisajes/paisaje08.jpg",
+        "available":"0"
+    },
+    {
+        "id":"10",
+        "tipo":"Esculturas",
+        "tipobra":"2",
+        "nombre":"Réplicas Griegas",
+        "descripcion":"descripcion10",
+        "autor":"Zoey Rafftermann",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/esculturas/esculturas5.webp",
+        "available":"1"
+    },
+    {
+        "id":"11",
+        "tipo":"Orfebreria",
+        "tipobra":"3",
+        "nombre":"Anillo Valhalla",
+        "descripcion":"descripcion11",
+        "autor":"Sybil Vennett",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/orfebreria/orfebreria8.webp",
+        "available":"1"
+    },
+    {
+        "id":"12",
+        "tipo":"Tejidos",
+        "tipobra":"4",
+        "nombre":"Chaleco Blue Model",
+        "descripcion":"descripcion12",
+        "autor":"Neia Varaya",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/tejidos/tejidos3.webp",
+        "available":"0"
+    },
+    {
+        "id":"13",
+        "tipo":"Pinturas",
+        "tipobra":"1",
+        "nombre":"Distant Mountains",
+        "descripcion":"descripcion1",
+        "autor":"Andrés Salfate",
+        "anio":"2024",
+        "img":"../GROUP ZERO/assets/img/bobross/bobRoss08.jpg",
+        "available":""
+    }
+]
+}

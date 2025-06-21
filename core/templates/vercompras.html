@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Compras generales</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Usuario</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if user.is_authenticated %}
+                        {% if user.tipo == 'vendedor' or user.tipo == 'contador' or user.is_superuser%}
+                            {% for item in purchases %}
+                                <tr>
+                                    <td><a href="{% url 'vercompra' item.compra.id %}" class="btn btn-outline-info">
+                                    {{item.compra.id}}</a></td>
+                                    <td class="price"><a href="{% url 'profileWatch' item.user_id %}" class="btn btn-outline-info">{{item.user_id}}</a></td>
+                                    <td class="price">{{item.compra.cantidad}}</td>
+                                    <td class="price">{{item.compra.total}}</td>
+                                    <td class="price">{{item.compra.estado}}</td>
+                                    <td class="price">{{item.compra.fecha}}</td>
+                                    {% if item.compra.created %}
+                                        
+                                    {% else %}
+                                        <td>
+                                            <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                                <a href="{% url 'pedidoCrear' item.compra.id %}" class="btn btn-outline-info" style="margin-top:1vh;">Crear pedido</a>
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {%endfor%}
+                        {% else %}
+                            <tr>
+                                <td colspan="3">
+                                    <div class="alert text-center">Sin privilegios</div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert text-center">Debe loguearse</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

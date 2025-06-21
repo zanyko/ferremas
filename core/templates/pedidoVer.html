@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Gestión de pedido</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+            <div class="table-container">
+                <table id="tobras"> 
+                    <thead>
+                        <tr>
+                            <th>Código pedido</th>
+                            <th>Código Compra</th>
+                            <th>Usuario</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="price">{{pedido.id}}</td>
+                            <td class="price">{{pedido.idCompra.id}}</td>
+                            <td class="price">{{pedido.idUser.id}}</td>
+                            <td class="price">{{pedido.estado}}</td>
+                            <td class="price">{{pedido.fecha}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr><span class="liner"></span><hr>
+                <table id="tobras"> 
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Ubicacion</th>
+                            <th>Código</th>
+                            <th>Stock</th>
+                            <th>Categoria</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if user.is_authenticated %}
+                            {% for prod in productos %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'admire' prod.id %}">
+                                            <img src="{{ prod.idProducto.imagen.url }}" style="height:9vw; border-radius: 15px;">
+                                        </a>
+                                    </td>
+                                    <td><a href="{% url 'admire' prod.id %}" class="btn btn-outline-info">
+                                        {{prod.idProducto.nombre}}</a>
+                                    </td>
+                                    <td style="color:aquamarine">{{prod.idProducto.ubicacion}}</td>
+                                    <td>{{prod.id}}</td>
+                                    <td style="color:aquamarine">{{prod.idProducto.stock}}</td>
+                                    <td>{{prod.idProducto.categoria}}</td>
+                                    <td>{{prod.idProducto.estado}}</td>
+                                </tr>
+                            {%endfor%}
+                        {% endif %}
+                    </tbody>
+                </table>
+                {% if request.user.tipo == 'bodeguero' or request.user.is_superuser %}
+                    {% if pedido.sent %}
+                        <div style="display: flex; justify-content: center;">
+                            <p class="pvalue2">Paquete enviado</p>
+                        </div>
+                    {% else %}
+                        <div class="profile-buttons">
+                            <a href="{% url 'paqueteCrear' pedido.id %}" class="btn btn-outline-info" style="font-size: 2vh;">Crear paquete</a>
+                        </div> 
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+<div class="collapse navbar-collapse naz" id="navbarNavDropdown">
+    <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products' %}">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'buscar' %}">Buscar</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu Cliente
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'buscar' %}">Ver productos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'carrito2' %}">Carrito</a></li>
+                        <li><a class="dropdown-item" href="{% url 'miscompras' %}">Mis Compras</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Ver mi Perfil</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="navbar-right">
+        {% if user.is_authenticated %}
+            <div class="boxes">
+                <a href="{% url 'profile' %}" class="nav-link" title="Click para ver tu Perfil">{{ user.username }}</a>
+            </div>
+            <a href="{% url 'profile' %}" class="nav-link"><img class="pic-user" src="{{user.pic.url}}" alt="imgGC" title="Click para ver tu Perfil"></a>
+            <div class="boxes">
+                <a href="{% url 'cerrar' %}" class="navbar-item" id="#">Cerrar sesión</a>
+            </div>
+        {% else %}
+            <img src="{% static 'assets/icons/tea.png' %}" alt="imgGC">
+            <div class="boxes">
+                <a href="{% url 'login' %}" id="userGC">Iniciar sesion</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

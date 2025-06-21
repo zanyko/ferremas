@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Detalle Balance Mensual</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+            <div class="admirePerfil">
+                <div class="admirePrl">
+                    <p class="pattribute">Codigo: </p>
+                    <p class="pvalue">{{bal.id}}</p>
+                </div>
+                <div class="admirePrl2">
+                    <div>
+                        <p class="pattribute">Venta Total: </p>
+                        <p class="pvalue" >{{bal.totalVentas}}</p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Gastos totales: </p>
+                        <p class="pvalue">{{bal.gastos}}</p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Balance mensual</p>
+                        <p class="pvalue">{{bal.BalanceMensual}}</p>
+                    </div>
+                </div>
+                <div class="admirePrl2">
+                    <div>
+                        <p class="pattribute">Notas adicionales</p>
+                        <p class="pvalue">{{bal.notas}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-buttons">
+                    <a href="{% url 'balances' %}" class="btn btn-outline-info" style="font-size: 2vh;">Volver</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

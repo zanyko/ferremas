@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+<!--FORMULARIO-->   
+<div class="container">
+    <div class="login-container2">
+        <div class="form-title">
+            <h2>Añadir dirección</h2>
+        </div>
+        <span class="liner"></span>
+        <form action="#" method="POST" enctype="multipart/form-data" id="addressForm"onsubmit="validarAddress()" class="form85">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="" class="form-label">Nombre de dirección</label><br>
+                {% render_field form.name type="text" class="form-control" placeholder="Ingrese nombre" id="id_name" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Calle</label><br>
+                {% render_field form.street type="text" class="form-control" placeholder="Ingrese calle" id="id_street"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Ciudad</label><br>
+                {% render_field form.city type="text" class="form-control" placeholder="Ingrese ciudad" id="id_city"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Región</label><br>
+                {% render_field form.state type="text" class="form-control" placeholder="Ingrese región" id="id_state"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Código postal</label><br>
+                {% render_field form.zipcode type="text" class="form-control" placeholder="Ingrese código postal" id="id_zipcode" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">País</label><br>
+                {% render_field form.country type="text" class="form-control" placeholder="Ingrese país" id="id_country"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Telefóno</label><br>
+                {% render_field form.phone type="text" class="form-control" placeholder="Ingrese telefóno" id="id_phone"%}
+            </div>
+
+            <div class="form-submit-btn">
+                <input type="submit" class="btn btn-outline-info boton" value="Agregar dirección">
+            </div>
+        </form>
+    </div>
+</div>
+<scrip type="module" src="{% static 'js/funktion.js' %}"></scrip>
+{% endblock %}

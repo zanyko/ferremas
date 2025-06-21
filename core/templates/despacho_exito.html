@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Paquete registrado con Exito</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="admirePart">
+            <div class="admireDiv3">
+                {% if aftership_result %}
+                    <div>
+                        <p class="pattribute">Número de seguimiento:</p>
+                        <p class="pvalue">
+                            {{ aftership_result.data.tracking.tracking_number }}
+                        </p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Courier:</p>
+                        <p class="pvalue">
+                            {{ aftership_result.data.tracking.slug }}
+                        </p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Enlace de seguimiento:</p>
+                        <p class="pvalue">
+                            <a class="pa" href="{{ aftership_result.data.tracking.courier_tracking_link }}" target="_blank">
+                                {{ aftership_result.data.tracking.courier_tracking_link }}
+                            </a>
+                        </p>
+                    </div> 
+                {% else %}
+                    <p class="pvalue">No hay datos de AfterShip & Starken.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

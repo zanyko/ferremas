@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script>
+        $(function(){
+            $("#formulario").validate({
+                //validate tiene 2 bloques, reglas y mensajes
+                rules:{
+                    descripcion:'required',
+                },
+                messages:{
+                    descripcion:{
+                        required:'Ingrese descripción'
+                    }
+                }
+            })
+        })
+    </script>
+    <!--FORMULARIO--> 
+    <div class="container">
+        <div class="login-container2" style="padding:10vh;">
+            <div class="form-title">
+                <h2>Generar informe mensual</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="admirePerfil2">
+                <div class="admirePrl4">
+                    <div>
+                        <p class="pattribute">Balance reciente</p>
+                        <p class="pvalue2">{{bal.id}}</p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Balance mensual</p>
+                        <p class="pvalue2">{{bal.BalanceMensual}}</p>
+                    </div>
+                </div>
+                <div class="admirePrl3">
+                    <div>
+                        <p class="pattribute">Venta Total</p>
+                        <p class="pvalue2" >{{bal.totalVentas}}</p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Gastos totales</p>
+                        <p class="pvalue2">{{bal.gastos}}</p>
+                    </div>
+                </div>
+                <div class="admirePrl3">
+                    <div>
+                        <p class="pattribute">Notas adicionales</p>
+                        <p class="pvalue2">{{bal.notas}}</p>
+                    </div>
+                </div>
+            </div>
+            <form action="#" method="POST" enctype="multipart/form-data" id="formulario" class="form85">
+                {% csrf_token %}
+    
+                <div class="form-group">
+                    <p class="pattribute">Autor:</p>
+                    <p class="pvalue2">{{ user.first_name }} {{user.last_name }}</p>
+                </div>
+                <div>
+                    <p id="reloj" class="pvalue2"></p>
+                </div>
+    
+                <div class="form-group">
+                    {{ form.descripcion.label}}
+                    {{ form.descripcion }}
+                </div>
+                <div class="form-submit-btn">
+                    <input type="submit" value="Crear informe" class="btn btn-outline-info">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/fecha_reloj.js' %}"></script>
+{% endblock %}

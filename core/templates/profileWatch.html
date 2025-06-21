@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Perfil</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+        <div class="admirePerfil">
+            <div class="admirePrl"> 
+                <img class="pic-profile" src="{{ usuario.pic.url }}">
+                <p class="pusername">{{usuario.username}}</p>
+            </div>
+            <div class="admirePrl2">
+                <div>
+                    <p class="pattribute">Nombre: </p>
+                    <p class="pvalue" >{{usuario.first_name}} {{usuario.last_name}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Email: </p>
+                    <p class="pvalue">{{usuario.email}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Biografía: </p>
+                    <p class="pvalue">{{usuario.bio}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

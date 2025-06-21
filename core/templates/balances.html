@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Balances</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Ventas</th>
+                        <th>Gastos</th>
+                        <th>Balance</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bal in balances %}
+                        <tr>
+                            <td class="price">{{bal.id}}</td>
+                            <td class="price">{{bal.totalVentas}}</td>
+                            <td class="price">{{bal.gastos}}</td>
+                            <td class="price">{{bal.BalanceMensual}}</td>
+                            <td class="price">{{bal.fecha}}</td>
+                            <td>
+                                <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                    <a href="{% url 'balance' bal.id %}" class="btn btn-outline-info" style="margin-top:1vh;">Ver balance</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

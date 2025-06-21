@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Informe mensual</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+            <div class="admirePerfil">
+                <div class="admirePrl3">
+                    <p class="pattribute">Codigo: </p>
+                    <p class="pvalue2">{{informe.id}}</p>
+                </div>
+                <div class="admirePrl3">
+                    <div>
+                        <p class="pattribute">Autor: </p>
+                        <p class="pvalue2" >{{informe.idUser.first_name}}</p>
+                    </div>
+                    <div>
+                        <p class="pattribute">Fecha: </p>
+                        <p class="pvalue2">{{informe.fecha}}</p>
+                    </div>
+                </div>
+                <div class="admirePrl3">
+                    <div>
+                        <p class="pattribute">Descripcion: </p>
+                        <p class="pvalue2">{{informe.descripcion}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-buttons">
+                    <a href="{% url 'informe_m' %}" class="btn btn-outline-info" style="font-size: 2vh;">Volver</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Informes de desempeño</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Autor</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in informes %}
+                        <tr>
+                            <td class="price">{{item.id }}</td>
+                            <td class="price">{{item.idUser.first_name }}</td>
+                            <td class="price">{{item.fecha }}</td>
+
+                            <td>
+                                <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                    <a href="{% url 'informe_dd' item.id %}" class="btn btn-outline-info" style="margin-top:1vh;">Ver informe</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

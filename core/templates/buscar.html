@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Buscar</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Marca</th>
+                        <th>Año</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prod in productos %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'admire' prod.id %}">
+                                    <img src="{{ prod.imagen.url }}" style="height:9vw; border-radius: 15px;">
+                                </a>
+                            </td>
+                            <td><a href="{% url 'admire' prod.id %}" class="btn btn-outline-info">
+                                {{prod.nombre}}</a></td>
+                            <td>{{prod.categoria}}</td>
+                            <td>{{prod.marca}}</td>
+                            <td>{{prod.anio}}</td>
+                            <td>${{prod.precio}}</td>
+                            <td>{{prod.stock}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

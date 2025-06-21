@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Perfil</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+        <div class="admirePerfil">
+            <div class="admirePrl"> 
+                <img class="pic-profile" src="{{ user.pic.url }}">
+                <p class="pusername">{{user.username}}</p>
+            </div>
+            <div class="admirePrl2">
+                <div>
+                    <p class="pattribute">Nombre: </p>
+                    <p class="pvalue" >{{user.first_name}} {{user.last_name}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Email: </p>
+                    <p class="pvalue">{{user.email}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Biografía: </p>
+                    <p class="pvalue">{{user.bio}}</p>
+                </div>
+                <div>
+                    <a href="{% url 'addresses' %}" class="pa">Mis direcciones</a>
+                </div>
+            </div>
+        </div>
+        <div class="profile-buttons">
+            {% if user.is_authenticated and request.user.id == user.id %}
+                <a href="{% url 'address' %}" class="btn btn-outline-info" style="font-size: 2vh;">Agregar dirección</a>
+                <a href="{% url 'profileMod' %}" class="btn btn-outline-info" style="font-size: 2vh;">Modificar Perfil</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

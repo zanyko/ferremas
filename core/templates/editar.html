@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <hr>
+        <div class="login-container">
+            <div class="form-title" style="margin-bottom: 15px;">
+                <h2>Edición</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="table-container">
+                <table id="tobras"> 
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prod in productos %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'admire' prod.id %}">
+                                        <img src="{{ prod.imagen.url }}" >
+                                    </a>
+                                </td>
+                                <td><a href="{% url 'admire' prod.id %}" class="btn btn-outline-info">
+                                    {{prod.nombre}}</a></td>
+                                <td>{{prod.categoria}}</td>
+                                <td>{{prod.stock}}</td>
+                                {% if user.is_staff %}
+                                    <td>
+                                        <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                            <a href="{% url 'productoModify' prod.id %}" class="btn btn-outline-warning">Editar</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                            <a href="{% url 'eliminar' prod.id %}" class="btn btn-outline-danger" style="margin-top:1vh;">Borrar</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

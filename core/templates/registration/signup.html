@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+<!--FORMULARIO-->   
+<div class="container">
+    <div class="login-container2">
+        <div class="form-title">
+            <h2>Registrarse</h2>
+        </div>
+        <span class="liner"></span>
+        <form action="#" method="POST" enctype="multipart/form-data" id="signupForm"onsubmit="validarSignUp()" class="form85">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="" class="form-label">Usuario: </label><br>
+                {% render_field form.username type="text" class="form-control" placeholder="Nombre de usuario" id="id_username" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Nombre: </label><br>
+                {% render_field form.first_name type="text" class="form-control" placeholder="Nombre" id="id_first_name"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Apellido: </label><br>
+                {% render_field form.last_name type="text" class="form-control" placeholder="Apellido" id="id_lastname"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Email: </label><br>
+                {% render_field form.email type="text" class="form-control" placeholder="Ingrese Email" id="id_email" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label" >Contraseña: </label><br>
+                {% render_field form.password1 type="password" class="form-control" placeholder="Ingrese contraseña" id="id_password1" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label" >Confirme contraseña: </label><br>
+                {% render_field form.password2 type="password" class="form-control" placeholder="Repita contraseña" id="id_password2" %}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Imagen de perfil: </label>
+                {% render_field form.pic class="form-control" id="id_pic"%}
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Biografía: </label><br>
+                {% render_field form.bio type="text" class="form-control" placeholder="biografia" id="id_bio"%}
+            </div>
+            <div class="form-submit-btn">
+                <input type="submit" class="btn btn-outline-info" value="Registrarse">
+            </div>
+        </form>
+    </div>
+</div>
+<scrip type="module" src="{% static 'js/funktion.js' %}"></scrip>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Pedidos generados</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Código Compra</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if user.tipo == 'vendedor' or user.tipo == 'bodeguero' or user.is_superuser%}
+                        {% for item in pedidos %}
+                            <tr>
+                                <td class="price">{{item.id}}</td>
+                                <td class="price">{{item.idCompra.id}}</td>
+                                <td class="price">{{item.idUser.id}}</td>
+                                <td class="price">{{item.estado}}</td>
+                                <td class="price">{{item.fecha}}</td>
+                                {% if request.user.tipo == 'bodeguero' or request.user.is_superuser %}
+                                    <td>
+                                        <div class="d-flex flex-direction-column flex-wrap justify-content-space-between">
+                                            <a href="{% url 'pedidoVer' item.id %}" class="btn btn-outline-info" style="margin-top:1vh;">Ver pedido</a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {%endfor%}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert text-center">Sin privilegios</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

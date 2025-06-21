@@ -1,0 +1,58 @@
+{% load static %}
+<div class="container">
+    <div class="carro-container">
+        <div class="carro-title">
+            <a href="{% url 'carrito2' %}">Artículos en Carrito</a>
+        </div>
+        <span class="liner"></span>
+        <div class="table-carro">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Total item</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if request.session.carrito %}
+                        {% for key, value in request.session.carrito.items %}
+                            <tr>
+                                <td>{{value.nombre}}</td>
+                                <td>{{value.precio}}</td>
+                                <td>{{value.total}}</td>
+                                <td>
+                                    <span style="margin-right:1vw;">{{value.cantidad}}</span>
+                                    <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                                    <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+                                    <a href="{% url 'Del' value.producto_id %}"><span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                      </svg></span></a>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert text-center">Carrito Vacío</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="totalapagar">Total a pagar:  ${{total_carrito}}</div>
+        <span class="liner"></span>
+        <div class="row text-center">
+            <div class="d-flex justify-content-around">
+                <a href="{% url 'CLS' %}" class="btn btn-outline-warning btn-responsive" title="Vacíe su carrito">Limpiar</a>
+                <form method="POST" action="{% url 'preview' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-info btn-responsive" title="Precompra">Comprar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

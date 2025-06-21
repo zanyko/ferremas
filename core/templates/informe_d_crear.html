@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script>
+        $(function(){
+            $("#formulario").validate({
+                //validate tiene 2 bloques, reglas y mensajes
+                rules:{
+                    descripcion:'required',
+                },
+                messages:{
+                    descripcion:{
+                        required:'Ingrese descripción'
+                    }
+                }
+            })
+        })
+    </script>
+    <!--FORMULARIO--> 
+    <div class="container">
+        <div class="login-container2" style="padding:10vh;">
+            <div class="form-title">
+                <h2>Generar informe desempeño</h2>
+            </div>
+            <span class="liner"></span>
+            <form action="#" method="POST" enctype="multipart/form-data" id="formulario" class="form85">
+                {% csrf_token %}
+    
+                <div class="form-group">
+                    <p class="pattribute">Autor:</p>
+                    <p class="pvalue2">{{ user.first_name }} {{user.last_name }}</p>
+                </div>
+                <div>
+                    <p id="reloj" class="pvalue2"></p>
+                </div>
+    
+                <div class="form-group">
+                    {{ form.descripcion.label}}
+                    {{ form.descripcion }}
+                </div>
+                <div class="form-submit-btn">
+                    <input type="submit" value="Crear informe" class="btn btn-outline-info">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/fecha_reloj.js' %}"></script>
+{% endblock %}

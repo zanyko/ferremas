@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <hr>
+        <div class="login-container">
+            <div class="form-title" style="margin-bottom: 15px;">
+                <h2>Buscar</h2>
+            </div>
+            <span class="liner"></span>
+            <div class="table-container">
+                <table id="tobras"> 
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Ubicacion</th>
+                            <th>Código</th>
+                            <th>Stock</th>
+                            <th>Categoria</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prod in productos %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'admire' prod.id %}">
+                                        <img src="{{ prod.imagen.url }}" >
+                                    </a>
+                                </td>
+                                <td><a href="{% url 'admire' prod.id %}" class="btn btn-outline-info">
+                                    {{prod.nombre}}</a>
+                                </td>
+                                <td style="color:aquamarine">{{prod.ubicacion}}</td>
+                                <td>{{prod.id}}</td>
+                                <td style="color:aquamarine">{{prod.stock}}</td>
+                                <td>{{prod.categoria}}</td>
+                                <td>{{prod.estado}}</td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Compra realizada</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Cantidad de artículos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if user.is_authenticated %}
+                        <tr>
+                            <td class="price">{{compra.id}}</td>
+                            <td class="price">{{compra.cantidad}}</td>
+                            <td class="price">${{compra.total}}</td>
+                            <td class="price">{{compra.estado}}</td>
+                            <td class="price">{{compra.fecha}}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert text-center">Sin compras realizadas</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <span class="liner"></span>
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total por Ítem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prod in productos %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'admire' prod.idProducto.id %}">
+                                    <img src="{{ prod.idProducto.imagen.url }}" style="height:9vw; border-radius: 15px;">
+                                </a>
+                            </td>
+                            <td><a href="{% url 'admire' prod.idProducto.id %}" class="btn btn-outline-info">
+                                {{ prod.idProducto.nombre }}</a></td>
+                            <td>{{ prod.idProducto.categoria }}</td>
+                            <td>{{ prod.idProducto.precio }}</td>
+                            <td>{{ prod.cantidad }}</td>
+                            <td>{{ prod.totalPorItem }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

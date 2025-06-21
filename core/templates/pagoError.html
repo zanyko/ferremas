@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Pago Erroneo</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="error-container">
+            <div class="et">
+                <p>Lo sentimos, tu transacción no pudo ser procesada.</p>
+            </div>
+            <div class="et">
+                <a href="{% url 'products' %}" class="btn btn-outline-success">Volver a comprar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

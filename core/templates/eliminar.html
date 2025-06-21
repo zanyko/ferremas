@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Eliminar Obra</h2>
+        </div>
+        <span class="liner"></span>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="admirePartEliminar">
+                <div class="">
+                    <a href="{% url 'admire' prod.id %}" >
+                        <img src="{{ prod.imagen.url }}" class="card-image-top" style="height:15vw; border-radius: 15px; border:1px solid lightgreen">
+                    </a>
+                </div>
+                <div> 
+                    Nombre:<br>{{ prod.nombre }}
+                </div>
+                <div> 
+                    Id:<br>{{ prod.id }}
+                </div>
+            </div>
+            <div class="admirePartEliminar">
+                <div> 
+                    Descripción:<br>{{ prod.descripcion }}
+                </div>
+                <div> 
+                    Marca:<br>{{ prod.marca }}
+                </div>
+                <div> 
+                    Categoria:<br>{{ prod.categoria }}
+                </div>
+                <div> 
+                    Año:<br>{{ prod.anio }}
+                </div>
+                <div> 
+                    Stock:<br>{{ prod.stock }}
+                </div>
+                <div> 
+                    Precio:<br>{{ prod.precio }}
+                </div>
+            </div>
+            <div class="btn-center">
+                <input type="submit" value="Eliminar definitivamente" name="elimina" class="btn btn-outline-danger">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

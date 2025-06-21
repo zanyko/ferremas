@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <hr>
+    <div class="admire-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Pago exitoso</h2>
+        </div>
+        <span class="liner"></span>
+        {% if user.is_authenticated %}
+        <div class="admirePart">
+            <div class="admireDiv3">
+                <div>
+                    <p class="pattribute">Orden de compra</p>
+                    <p class="pvalue">{{response.buy_order}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Fecha (utc)</p>
+                    <p class="pvalue">{{response.transaction_date}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Cantidad de items comprados</p>
+                    <p class="pvalue">{{compra.cantidad}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Monto total</p>
+                    <p class="pvalue">$ {{compra.total}}</p>
+                </div>
+                
+            </div>
+            <div class="admireDiv3">
+                <div>
+                    <p class="pattribute">Tarjeta usada</p>
+                    <p class="pvalue" >{{response.card_detail}}</p>
+                </div>
+                <div>
+                    <p class="pattribute">Tipo de pago</p>
+                    <p class="pvalue">{{response.payment_type_code}}</p>
+                </div>
+                <div class="form-submit-btn">
+                    <a href="{% url 'miscompras' %}" class="btn btn-outline-success" style="color:aquamarine; margin-top:1vh;">Ver mis compras</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

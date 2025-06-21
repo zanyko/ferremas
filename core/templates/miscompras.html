@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Mis compras</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Cantidad de artículos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if user.is_authenticated %}
+                        {% for compra in compras %}
+                            <tr>
+                                <td><a href="{% url 'vercompra' compra.id %}" class="btn btn-outline-info">
+                                {{compra.id}}</a></td>
+                                <td class="price">{{compra.cantidad}}</td>
+                                <td class="price">{{compra.total}}</td>
+                                <td class="price">{{compra.estado}}</td>
+                                <td class="price">{{compra.fecha}}</td>
+                            </tr>
+                        {%endfor%}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert text-center">Sin compras realizadas</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

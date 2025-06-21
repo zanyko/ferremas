@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="login-container">
+        <div class="form-title" style="margin-bottom: 15px;">
+            <h2>Comunidad</h2>
+        </div>
+        <span class="liner"></span>
+        <div class="table-container">
+            <table id="tobras"> 
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Username</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in usuarios %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'profileWatch' u.id %}">
+                                    <img src="{{ u.pic.url }}" class="img-table">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'profileWatch' u.id %}" class="td-a-profile2">
+                                    {{u.username}}
+                                </a>
+                            </td>
+                            <td>
+                                <p  class="td-a-profile">
+                                    {{u.first_name}}
+                                </p>
+                            </td>
+                            <td>
+                                <p  class="td-a-profile">
+                                    {{u.last_name}}
+                                </p>
+                            </td>
+                            <td>
+                                <p  class="td-a-profile">
+                                    {{u.email}}
+                                </p>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
