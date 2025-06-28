@@ -145,7 +145,7 @@ LOGOUT_REDIRECT_URL="/"
 
 
 WEBPAY = '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C'
-AFTERKEY = 'asat_15df77c198444d03a272d5b05b4b42cd'
+AFTERKEY = 'asat_1976815dc7484598ba8f851ab6ddd1ff'
 
 #::::::::::::::::::::::::::::::::::::::::::
 #::::::::::::::::::::::::::::::::::::::::::
